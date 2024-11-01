@@ -1,0 +1,113 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .grid-row-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .grid-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .row-control {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(7, 2.7cm);
+    grid-template-rows: 4.4cm;
+    gap: 0;
+  }
+  
+  .image-box {
+    position: relative;
+    width: 2.7cm;
+    height: 4.4cm;
+    border: 1px solid #ccc;
+    overflow: hidden;
+  }
+  
+  .image-box input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* Oculto hasta que se cargue la imagen */
+  }
+  
+  /* Botón de eliminar en cada cuadro */
+  .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+  
+  /* Botones de acción generales */
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilos específicos para impresión */
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+  
+    .grid, .grid * {
+      visibility: visible;
+    }
+  
+    button, .delete-button {
+      display: none;
+    }
+  
+    .container {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  
+    .grid {
+      margin: 0;
+      padding: 0;
+      page-break-inside: avoid;
+    }
+  
+    .image-box {
+      border: none;
+    }
+  }
+  
