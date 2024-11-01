@@ -55,9 +55,10 @@
   .image-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: none; /* Oculto hasta que se cargue la imagen */
-  }
+    object-fit: contain; /* O usa "cover" para un ajuste diferente */
+    display: none;
+}
+
   
   /* Botón de eliminar en cada cuadro */
   .delete-button {
