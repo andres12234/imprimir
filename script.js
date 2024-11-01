@@ -80,9 +80,32 @@ document.addEventListener("DOMContentLoaded", function() {
   
   function loadImage(event, index) {
     const img = document.getElementById(`img${index}`);
-    img.src = URL.createObjectURL(event.target.files[0]);
-    img.style.display = "block";
-  }
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const image = new Image();
+        image.onload = function() {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            // Ajusta el tamaño del canvas según el tamaño deseado en cm o px
+            canvas.width = 270; // 2.8 cm en px, ajusta según necesidad
+            canvas.height = 440; // 4.4 cm en px, ajusta según necesidad
+
+            // Dibuja la imagen en el canvas redimensionándola
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+            // Convertimos el canvas a una URL y asignamos a src
+            img.src = canvas.toDataURL("image/jpeg", 1.0); // calidad máxima
+            img.style.display = "block";
+        };
+        image.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+}
+
   
   function loadImageInEmptyCells(event) {
     const imageUrl = URL.createObjectURL(event.target.files[0]);
