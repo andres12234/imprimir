@@ -81,34 +81,41 @@
     cursor: pointer;
   }
   
-  /* Estilos específicos para impresión */
-  @media print {
-    body * {
-      visibility: hidden;
-    }
-  
-    .grid, .grid * {
-      visibility: visible;
-    }
-  
-    button, .delete-button {
-      display: none;
-    }
-  
-    .container {
-      padding: 0;
-      margin: 0;
-      width: 100%;
-    }
-  
-    .grid {
-      margin: 0;
-      padding: 0;
-      page-break-inside: avoid;
-    }
-  
-    .image-box {
-      border: 1px solid hsl(0, 91%, 50%); /* O el color que prefieras */
-    }
+/* Estilos específicos para impresión */
+@media print {
+  /* Oculta todo excepto la cuadrícula y sus elementos */
+  body * {
+    visibility: hidden;
   }
-  
+
+  /* Asegura que la cuadrícula y sus elementos sean visibles en la impresión */
+  .grid, .grid * {
+    visibility: visible;
+  }
+
+  /* Oculta botones de acción */
+  button, .delete-button {
+    display: none;
+  }
+
+  /* Configuración de contenedor para impresión */
+  .container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Ajustes de cuadrícula */
+  .grid {
+    margin: 0;
+    padding: 0;
+    gap: 0; /* Asegura que no haya separación entre celdas */
+    page-break-inside: avoid; /* Evita quiebres de página en medio de la cuadrícula */
+  }
+
+  /* Estilos de celdas de imagen en impresión */
+  .image-box {
+    margin: 0; /* Elimina cualquier margen entre celdas en impresión */
+    border: 1px solid #fd0a0a; /* Define el borde visible */
+  }
+}
